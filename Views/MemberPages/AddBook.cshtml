@@ -1,0 +1,40 @@
+﻿@model HukSleva.ViewModels.ValidationModels.BookValid.AddBookValid
+
+<form asp-antiforgery="true" asp-action="AddBook" asp-controller="Books" enctype="multipart/form-data">
+    <div>
+        <div class="validation" asp-validation-summary="All"></div>
+        <div>
+            <label asp-for="Author"></label><br />
+            <input type="text" asp-for="Author" />
+            <span asp-validation-for="Author"></span>
+        </div>
+        <div>
+            <label asp-for="Name"></label><br />
+            <input asp-for="Name" />
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div>
+            <label asp-for="Price"></label><br />
+            <input asp-for="Price" />
+            <span asp-validation-for="Price"></span>
+        </div>
+        <div>
+            <label asp-for="Img"></label><br />
+            <input asp-for="Img" accept="image/*" />
+            <span asp-validation-for="Img"></span>
+        </div>
+        <div>
+            <label asp-for="BookBytes"></label><br />
+            <input asp-for="BookBytes" accept=".fb2, .epub, .mobi, .kf8, .djvu, .lrf, .azw, .txt"/>
+            <span asp-validation-for="BookBytes"></span>
+        </div>
+        <div>
+            <input type="submit" value="Добавить" />
+        </div>
+    </div>
+</form>
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,16 @@
+﻿@using HukSleva.ViewModels.BookController;
+@using HukSleva.Services;
+
+@model BookViewModelsCollectionService;
+
+
+
+@{
+    var next = Model?.First;
+    while (next != null)
+    {
+        @await Component.InvokeAsync("Book", new { book = next?.Value })
+        next = next?.Next;
+    }
+}
+

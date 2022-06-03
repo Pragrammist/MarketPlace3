@@ -1,0 +1,36 @@
+﻿@using HukSleva.ViewModels.BookController;
+
+@model CommentViewModel[]
+
+@if (User.Identity.IsAuthenticated)
+{
+    <div>
+        <form method="post" asp-action="ValidComment" asp-controller="ValidComment" asp-route-idBook="@ViewData["bId"]" asp-route-idUser ="@ViewBag.UserId">
+            <div>
+                <div class="validation" asp-validation-summary="All"></div>
+                <div>
+                    <label>Комментарий</label><br />
+                    <textarea name="commentText" type="text"></textarea>
+                </div>
+                <button type="submit"></button>
+            </div>
+        </form>
+    </div>
+}
+
+
+<article>
+    @{
+        for (int i = 0; i < (Model?.Length ?? 0); i++)
+        {
+            var m = Model[i];
+        <div style="border: 3px 3px 3px 3px">
+            @m.Date
+            <br />
+            @m.Text;
+            <br />
+            
+        </div>
+        }
+    }
+</article>

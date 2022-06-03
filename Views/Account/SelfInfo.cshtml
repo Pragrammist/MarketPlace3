@@ -1,0 +1,45 @@
+﻿@using HukSleva.ViewModels;
+@{
+
+    ViewData["Title"] = "HukSleva - личная информация пользователя";
+}
+@model UserSelfInfoModel
+
+
+
+@{
+    if (Model != null)
+    {
+        <div class="d-flex flex-column">
+            <div class="mt-1">
+                <span>Имя: </span>@Model.Nickname
+            </div>
+            <div class="mt-1">
+                <span>Дата рождения: </span>@Model.BirthDate
+            </div>
+            <div class="mt-1">
+                <span>Роль: </span>@Model.Role
+            </div>
+            <div class="mt-1">
+                <span>О себе: </span>@Model.SmallDiscription
+            </div>
+        </div>
+    }
+    else
+    {
+        <div>
+            Такого пользователя нет
+        </div>
+    }
+}
+
+@{ if (ViewBag.IsCurrent && Model != null)
+    {
+        <div>
+            Это вы
+        </div>
+        <div class="mt-1">
+            <span>Читаете сейчас </span>@ViewBag.BookName
+        </div>
+    }
+}

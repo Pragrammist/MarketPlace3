@@ -1,0 +1,39 @@
+﻿@using HukSleva.ViewModels.BookController
+@model BookViewModel
+<div class="d-flex flex-column" style="width:100%; height: 100%">
+    <div class="d-flex flex-column h-25">
+        <a asp-action="MakeReading" asp-controller="Books" asp-route-idUser="@ViewBag.UserId" asp-route-idBook="@Model.Id">Сделать текущей</a>
+        <a asp-action="MakeRead" asp-controller="Books" asp-route-idUser="@ViewBag.UserId" asp-route-idBook="@Model.Id">добавить в список прочитанных</a>
+        <a asp-action="BuyBook" asp-controller="Books" asp-route-idUser="@ViewBag.UserId" asp-route-idBook="@Model.Id">Купить</a>
+        <a asp-action="AddBookInShopingCard" asp-controller="Books" asp-route-idUser="@ViewBag.UserId" asp-route-idBook="@Model.Id">Добавить в корзину</a>
+        <div class="d-flex">
+            <a asp-action="AddRating" asp-controller="Books" asp-route-idBook="@Model.Id" asp-route-score="1" asp-route-idUser="@ViewBag.UserId">1</a>
+            <a asp-action="AddRating" asp-controller="Books" asp-route-idBook="@Model.Id" asp-route-score="2" asp-route-idUser="@ViewBag.UserId">2</a>
+            <a asp-action="AddRating" asp-controller="Books" asp-route-idBook="@Model.Id" asp-route-score="3" asp-route-idUser="@ViewBag.UserId">3</a>
+            <a asp-action="AddRating" asp-controller="Books" asp-route-idBook="@Model.Id" asp-route-score="4" asp-route-idUser="@ViewBag.UserId">4</a>
+            <a asp-action="AddRating" asp-controller="Books" asp-route-idBook="@Model.Id" asp-route-score="5" asp-route-idUser="@ViewBag.UserId">5</a>
+        </div>
+        <div>
+            <img src="@Model.ImgSrc" />
+        </div>
+
+        <div class="d-flex flex-column">
+            <div>Название @Model.Name</div>
+            <div>Автор @Model.Author</div>
+            <div>Цена @Model.Price</div>
+            <div>Рейтинг @Model.Rating</div>
+            <div>Проголосвало @Model.NumRated</div>
+        </div>
+
+    </div>
+    <div class="d-flex flex-column h-25">
+
+    </div>
+    <div class="d-flex h-50 flex-column">
+        @{
+            ViewDataDictionary vData = new ViewDataDictionary(ViewData);
+            vData.Add("bId", $"{Model.Id}");
+        }
+        @await Html.PartialAsync("Comment", Model.Comments, vData)
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@model HukSleva.ViewModels.ValidationModel.UserValidReg
+
+<form asp-antiforgery="true" asp-action="Registration" asp-controller="Account">
+    <div>
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+        <div>
+            <label asp-for="NickName"></label><br />
+            <input type="text" asp-for="NickName"/>
+            <span asp-validation-for="NickName"></span>
+        </div>
+        <div>
+            <label asp-for="Password"></label><br />
+            <input asp-for="Password"/>
+            <span asp-validation-for="Password" ></span>
+        </div>
+        <div>
+            <label asp-for="ConfirmPassword"></label><br />
+            <input asp-for="ConfirmPassword"/>
+            <span asp-validation-for="ConfirmPassword" name="user.ConfirmPassword"></span>
+        </div>
+        <div>
+            <label asp-for="Email"></label><br />
+            <input asp-for="Email"/>
+            <span asp-validation-for="Email"></span>
+        </div>
+        <div>
+            <label asp-for="BirthDate"></label><br />
+            <input asp-for="BirthDate"/>
+            <span asp-validation-for="BirthDate"></span>
+        </div>
+        <div>
+            <label asp-for="PhoneNumber"></label><br />
+            <input asp-for="PhoneNumber"/>
+            <span asp-validation-for="PhoneNumber"></span>
+        </div>
+
+        <div>
+            <label asp-for="SmallDiscription"></label><br />
+            <textarea asp-for="SmallDiscription" style="height: 85px; width: 400px; text-align:start">
+            </textarea >
+            <span asp-validation-for="SmallDiscription"></span>
+        </div>
+
+        <div>
+            <input type="submit" value="Зарегистрироваться" />
+        </div>
+    </div>
+</form>
+@section scripts{
+
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
